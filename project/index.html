@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faisal Electronics — Premium Components</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0a0b;
+    --bg2:       #111114;
+    --bg3:       #18181d;
+    --border:    #2a2a32;
+    --accent:    #f5a623;
+    --accent2:   #ff6b35;
+    --text:      #f0f0f0;
+    --muted:     #888;
+    --green:     #22c55e;
+    --red:       #ef4444;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ══════════════════════════════
+     HEADER / NAV
+  ══════════════════════════════ */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,11,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+  }
+
+  nav {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--text);
+  }
+
+  .logo-text span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .btn-cart {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-cart:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .cart-count {
+    background: var(--accent);
+    color: #000;
+    font-size: 11px;
+    font-weight: 600;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ══════════════════════════════
+     HERO
+  ══════════════════════════════ */
+  .hero {
+    position: relative;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 5rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,166,35,0.1);
+    border: 1px solid rgba(245,166,35,0.3);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 span {
+    display: block;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 420px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #000;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(245,166,35,0.35);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--muted);
+    background: var(--bg3);
+  }
+
+  /* Hero stats */
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-item { }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-circuit {
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 1;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-circuit::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(245,166,35,0.08) 0%, transparent 60%),
+      radial-gradient(circle at 70% 70%, rgba(255,107,53,0.06) 0%, transparent 60%);
+  }
+
+  .circuit-svg {
+    width: 85%;
+    height: 85%;
+    opacity: 0.7;
+  }
+
+  .floating-badge {
+    position: absolute;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .floating-badge.top-left {
+    top: 24px;
+    left: -20px;
+    animation-delay: 0s;
+  }
+
+  .floating-badge.bottom-right {
+    bottom: 24px;
+    right: -20px;
+    animation-delay: 2s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  /* ══════════════════════════════
+     TICKER
+  ══════════════════════════════ */
+  .ticker {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-flex;
+    gap: 3rem;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ticker-item span { color: var(--accent); }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ══════════════════════════════
+     SECTION COMMON
+  ══════════════════════════════ */
+  section {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 4rem 2.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .view-all {
+    color: var(--muted);
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s;
+    white-space: nowrap;
+    padding-bottom: 6px;
+  }
+
+  .view-all:hover { color: var(--accent); }
+
+  /* ══════════════════════════════
+     CATEGORIES
+  ══════════════════════════════ */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .cat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .cat-card:hover {
+    border-color: var(--accent);
+    background: var(--bg3);
+    transform: translateY(-3px);
+  }
+
+  .cat-card.active {
+    border-color: var(--accent);
+    background: rgba(245,166,35,0.08);
+  }
+
+  .cat-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .cat-name {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .cat-count {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ══════════════════════════════
+     SEARCH + FILTER
+  ══════════════════════════════ */
+  .search-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 2rem;
+  }
+
+  .search-input-wrap {
+    flex: 1;
+    position: relative;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 16px;
+  }
+
+  .search-input {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 11px 14px 11px 42px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: var(--muted); }
+
+  .filter-btn {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 11px 20px;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ══════════════════════════════
+     PRODUCT GRID
+  ══════════════════════════════ */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .product-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .product-card:hover {
+    border-color: rgba(245,166,35,0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+
+  .badge-new { background: var(--accent); color: #000; }
+  .badge-hot { background: var(--accent2); color: #fff; }
+  .badge-sale { background: var(--green); color: #000; }
+  .badge-low { background: var(--red); color: #fff; }
+
+  .product-img {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--bg3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(245,166,35,0.06) 0%, transparent 70%);
+  }
+
+  .product-wishlist {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: rgba(10,10,11,0.7);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    z-index: 2;
+    opacity: 0;
+  }
+
+  .product-card:hover .product-wishlist { opacity: 1; }
+  .product-wishlist:hover { border-color: var(--accent2); color: var(--accent2); }
+
+  .product-info {
+    padding: 1rem 1.1rem 1.1rem;
+  }
+
+  .product-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .product-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .product-specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 12px;
+  }
+
+  .spec-tag {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-price {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-current {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: var(--accent);
+  }
+
+  .price-old {
+    font-size: 11px;
+    color: var(--muted);
+    text-decoration: line-through;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .stock-status {
+    font-size: 11px;
+    font-family: 'DM Mono', monospace;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .stock-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .in-stock .stock-dot { background: var(--green); }
+  .in-stock { color: var(--green); }
+  .low-stock .stock-dot { background: var(--accent); }
+  .low-stock { color: var(--accent); }
+  .out-stock .stock-dot { background: var(--red); }
+  .out-stock { color: var(--red); }
+
+  .btn-add {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #000;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .btn-add:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(245,166,35,0.4);
+  }
+
+  /* ══════════════════════════════
+     FEATURED PRODUCT (WIDE CARD)
+  ══════════════════════════════ */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .featured-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+
+  .featured-card:hover {
+    border-color: rgba(245,166,35,0.4);
+    transform: translateY(-3px);
+  }
+
+  .featured-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(245,166,35,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .featured-card .big-icon {
+    font-size: 5rem;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    opacity: 0.15;
+  }
+
+  .featured-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .featured-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .featured-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 280px;
+  }
+
+  .featured-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+  }
+
+  /* ══════════════════════════════
+     PROMO BANNER
+  ══════════════════════════════ */
+  .promo-banner {
+    background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(255,107,53,0.08));
+    border: 1px solid rgba(245,166,35,0.25);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 2.5rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .promo-banner::before {
+    content: '⚡';
+    position: absolute;
+    right: 200px;
+    font-size: 8rem;
+    opacity: 0.05;
+  }
+
+  .promo-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+  }
+
+  .promo-text p {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .promo-countdown {
+    display: flex;
+    gap: 12px;
+  }
+
+  .countdown-block {
+    text-align: center;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 16px;
+    min-width: 64px;
+  }
+
+  .countdown-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .countdown-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ══════════════════════════════
+     FOOTER
+  ══════════════════════════════ */
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+    padding: 3rem 2.5rem 2rem;
+    max-width: 1300px;
+    margin: 4rem auto 0;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-brand p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 1rem;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-col ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: var(--accent); }
+
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0 1.5rem;
+  }
+
+  .footer-copy {
+    color: var(--muted);
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .footer-copy span { color: var(--accent); }
+
+  .social-links {
+    display: flex;
+    gap: 10px;
+  }
+
+  .social-link {
+    width: 34px;
+    height: 34px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .social-link:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ══════════════════════════════
+     TOAST NOTIFICATION
+  ══════════════════════════════ */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1000;
+    transform: translateX(120%);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    min-width: 260px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+
+  .toast.show { transform: translateX(0); }
+  .toast-icon { font-size: 18px; }
+
+  /* ══════════════════════════════
+     ANIMATIONS
+  ══════════════════════════════ */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+  }
+
+  .animate-d1 { animation-delay: 0.1s; }
+  .animate-d2 { animation-delay: 0.2s; }
+  .animate-d3 { animation-delay: 0.3s; }
+  .animate-d4 { animation-delay: 0.4s; }
+
+  /* ══════════════════════════════
+     SCROLLBAR
+  ══════════════════════════════ */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-icon">⚡</div>
+      <span class="logo-text">FAISAL <span>ELECTRONICS</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#products">Products</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#">Brands</a></li>
+      <li><a href="#">Deals</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-cart" onclick="openCart()">
+        🛒 Cart
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<div style="max-width:1300px;margin:0 auto;padding:0 2.5rem;">
+  <div class="hero" style="padding-left:0;padding-right:0;">
+    <div>
+      <div class="hero-badge animate animate-d1">🟢 Open Now — Fast Delivery</div>
+      <h1 class="animate animate-d2">
+        PREMIUM
+        <span>ELECTRONICS</span>
+        COMPONENTS
+      </h1>
+      <p class="animate animate-d3">
+        Your trusted source for Arduino, OLED displays, sensors, modules
+        and everything you need to bring your projects to life.
+        Quality parts. Expert support.
+      </p>
+      <div class="hero-cta animate animate-d4">
+        <a href="#products" class="btn-primary">Shop Now →</a>
+        <a href="#categories" class="btn-secondary">Browse Categories</a>
+      </div>
+      <div class="hero-stats animate animate-d4">
+        <div class="stat-item">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Products</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">24H</div>
+          <div class="stat-label">Dispatch</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-label">Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2K+</div>
+          <div class="stat-label">Customers</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual animate animate-d3">
+      <div class="hero-circuit">
+        <svg class="circuit-svg" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Circuit board pattern -->
+          <rect x="60" y="60" width="180" height="180" rx="12" stroke="#f5a623" stroke-width="1.5" stroke-dasharray="8 4"/>
+          <rect x="80" y="80" width="140" height="140" rx="8" stroke="#2a2a32" stroke-width="1"/>
+          <!-- Chip -->
+          <rect x="110" y="110" width="80" height="80" rx="6" fill="#18181d" stroke="#f5a623" stroke-width="1.5"/>
+          <rect x="120" y="120" width="60" height="60" rx="4" fill="#111114" stroke="#2a2a32" stroke-width="1"/>
+          <text x="150" y="155" text-anchor="middle" fill="#f5a623" font-family="monospace" font-size="9">MCU</text>
+          <text x="150" y="167" text-anchor="middle" fill="#888" font-family="monospace" font-size="7">FAISAL</text>
+          <!-- Pins left -->
+          <line x1="60" y1="120" x2="110" y2="120" stroke="#f5a623" stroke-width="1.5"/>
+          <line x1="60" y1="140" x2="110" y2="140" stroke="#f5a623" stroke-width="1.5"/>
+          <line x1="60" y1="160" x2="110" y2="160" stroke="#ff6b35" stroke-width="1.5"/>
+          <line x1="60" y1="180" x2="110" y2="180" stroke="#f5a623" stroke-width="1.5"/>
+          <!-- Pins right -->
+          <line x1="190" y1="120" x2="240" y2="120" stroke="#f5a623" stroke-width="1.5"/>
+          <line x1="190" y1="140" x2="240" y2="140" stroke="#f5a623" stroke-width="1.5"/>
+          <line x1="190" y1="160" x2="240" y2="160" stroke="#ff6b35" stroke-width="1.5"/>
+          <line x1="190" y1="180" x2="240" y2="180" stroke="#f5a623" stroke-width="1.5"/>
+          <!-- Pins top -->
+          <line x1="130" y1="60" x2="130" y2="110" stroke="#f5a623" stroke-width="1.5"/>
+          <line x1="150" y1="60" x2="150" y2="110" stroke="#ff6b35" stroke-width="1.5"/>
+          <line x1="170" y1="60" x2="170" y2="110" stroke="#f5a623" stroke-width="1.5"/>
+          <!-- Pins bottom -->
+          <line x1="130" y1="190" x2="130" y2="240" stroke="#f5a623" stroke-width="1.5"/>
+          <line x1="150" y1="190" x2="150" y2="240" stroke="#ff6b35" stroke-width="1.5"/>
+          <line x1="170" y1="190" x2="170" y2="240" stroke="#f5a623" stroke-width="1.5"/>
+          <!-- Corner dots -->
+          <circle cx="60" cy="60" r="4" fill="#f5a623"/>
+          <circle cx="240" cy="60" r="4" fill="#f5a623"/>
+          <circle cx="60" cy="240" r="4" fill="#f5a623"/>
+          <circle cx="240" cy="240" r="4" fill="#f5a623"/>
+          <!-- Trace lines -->
+          <path d="M 60 60 L 40 60 L 40 150" stroke="#2a2a32" stroke-width="1" fill="none"/>
+          <path d="M 240 240 L 260 240 L 260 150" stroke="#2a2a32" stroke-width="1" fill="none"/>
+          <!-- Capacitor symbols -->
+          <rect x="36" y="90" width="8" height="3" fill="#888"/>
+          <rect x="36" y="96" width="8" height="3" fill="#888"/>
+          <rect x="256" y="170" width="8" height="3" fill="#888"/>
+          <rect x="256" y="176" width="8" height="3" fill="#888"/>
+        </svg>
+
+        <div class="floating-badge top-left">
+          <span style="color:var(--green)">●</span> Arduino Uno
+        </div>
+        <div class="floating-badge bottom-right">
+          ⚡ 500+ Parts
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TICKER ── -->
+<div class="ticker">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">🔥 Arduino Uno <span>₹450</span></span>
+    <span class="ticker-item">📦 Free shipping above <span>₹999</span></span>
+    <span class="ticker-item">⚡ OLED 0.96" <span>₹120</span></span>
+    <span class="ticker-item">🛒 MQ-135 Sensor <span>₹85</span></span>
+    <span class="ticker-item">🔌 NodeMCU ESP8266 <span>₹220</span></span>
+    <span class="ticker-item">📡 HC-05 Bluetooth <span>₹185</span></span>
+    <span class="ticker-item">🌡️ DHT22 Sensor <span>₹95</span></span>
+    <span class="ticker-item">🎯 Servo Motor SG90 <span>₹65</span></span>
+    <span class="ticker-item">🔋 18650 Battery <span>₹110</span></span>
+    <span class="ticker-item">📟 16x2 LCD Display <span>₹75</span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="ticker-item">🔥 Arduino Uno <span>₹450</span></span>
+    <span class="ticker-item">📦 Free shipping above <span>₹999</span></span>
+    <span class="ticker-item">⚡ OLED 0.96" <span>₹120</span></span>
+    <span class="ticker-item">🛒 MQ-135 Sensor <span>₹85</span></span>
+    <span class="ticker-item">🔌 NodeMCU ESP8266 <span>₹220</span></span>
+    <span class="ticker-item">📡 HC-05 Bluetooth <span>₹185</span></span>
+    <span class="ticker-item">🌡️ DHT22 Sensor <span>₹95</span></span>
+    <span class="ticker-item">🎯 Servo Motor SG90 <span>₹65</span></span>
+    <span class="ticker-item">🔋 18650 Battery <span>₹110</span></span>
+    <span class="ticker-item">📟 16x2 LCD Display <span>₹75</span></span>
+  </div>
+</div>
+
+<!-- ── PROMO BANNER ── -->
+<section style="padding-bottom:0;">
+  <div class="promo-banner">
+    <div class="promo-text">
+      <h3>⚡ FLASH SALE — UP TO 40% OFF</h3>
+      <p>On all Arduino boards, sensors and display modules. Limited stock!</p>
+    </div>
+    <div class="promo-countdown">
+      <div class="countdown-block">
+        <div class="countdown-num" id="cdHours">08</div>
+        <div class="countdown-label">HRS</div>
+      </div>
+      <div class="countdown-block">
+        <div class="countdown-num" id="cdMins">24</div>
+        <div class="countdown-label">MIN</div>
+      </div>
+      <div class="countdown-block">
+        <div class="countdown-num" id="cdSecs">00</div>
+        <div class="countdown-label">SEC</div>
+      </div>
+    </div>
+    <a href="#products" class="btn-primary">Grab Deals →</a>
+  </div>
+</section>
+
+<!-- ── CATEGORIES ── -->
+<section id="categories">
+  <div class="section-header">
+    <div>
+      <div class="section-label">// Browse by type</div>
+      <h2 class="section-title">CATEGORIES</h2>
+    </div>
+  </div>
+  <div class="categories-grid">
+    <a class="cat-card active" onclick="filterCategory('all')">
+      <span class="cat-icon">🧩</span>
+      <div class="cat-name">All Parts</div>
+      <div class="cat-count">48 items</div>
+    </a>
+    <a class="cat-card" onclick="filterCategory('boards')">
+      <span class="cat-icon">🤖</span>
+      <div class="cat-name">Dev Boards</div>
+      <div class="cat-count">12 items</div>
+    </a>
+    <a class="cat-card" onclick="filterCategory('display')">
+      <span class="cat-icon">📺</span>
+      <div class="cat-name">Displays</div>
+      <div class="cat-count">9 items</div>
+    </a>
+    <a class="cat-card" onclick="filterCategory('sensors')">
+      <span class="cat-icon">📡</span>
+      <div class="cat-name">Sensors</div>
+      <div class="cat-count">15 items</div>
+    </a>
+    <a class="cat-card" onclick="filterCategory('modules')">
+      <span class="cat-icon">⚙️</span>
+      <div class="cat-name">Modules</div>
+      <div class="cat-count">12 items</div>
+    </a>
+  </div>
+</section>
+
+<!-- ── FEATURED ── -->
+<section>
+  <div class="section-header">
+    <div>
+      <div class="section-label">// Editor's pick</div>
+      <h2 class="section-title">FEATURED</h2>
+    </div>
+  </div>
+  <div class="featured-grid">
+    <div class="featured-card" style="background:linear-gradient(135deg,#111114,#18181d);">
+      <div>
+        <div class="featured-label">🔥 Best Seller</div>
+        <div class="featured-name">ARDUINO UNO<br>REV 3</div>
+        <div class="featured-desc">The classic microcontroller board based on ATmega328P. Perfect for beginners and pros alike.</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.2rem;">
+          <span class="spec-tag">ATmega328P</span>
+          <span class="spec-tag">14 Digital I/O</span>
+          <span class="spec-tag">16MHz</span>
+          <span class="spec-tag">USB-B</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div class="featured-price">₹450</div>
+        <button class="btn-primary" onclick="addToCart('Arduino Uno Rev3', 450)">Add to Cart</button>
+      </div>
+      <div class="big-icon">🤖</div>
+    </div>
+
+    <div class="featured-card">
+      <div>
+        <div class="featured-label">⚡ New Arrival</div>
+        <div class="featured-name">ESP32<br>DEV KIT</div>
+        <div class="featured-desc">Dual-core WiFi + Bluetooth MCU. The powerhouse for IoT projects.</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div class="featured-price">₹380</div>
+        <button class="btn-add" onclick="addToCart('ESP32 Dev Kit', 380)">+</button>
+      </div>
+      <div class="big-icon">📶</div>
+    </div>
+
+    <div class="featured-card" style="background:linear-gradient(135deg,#18181d,#1a1608);">
+      <div>
+        <div class="featured-label">🎯 Bundle Deal</div>
+        <div class="featured-name">STARTER<br>KIT</div>
+        <div class="featured-desc">Arduino Uno + OLED + 10 sensors + breadboard + wires. Everything to start!</div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div class="featured-price">₹999</div>
+          <div style="font-size:11px;color:var(--muted);text-decoration:line-through;font-family:'DM Mono',monospace;">₹1,499</div>
+        </div>
+        <button class="btn-primary" onclick="addToCart('Starter Kit Bundle', 999)">Add to Cart</button>
+      </div>
+      <div class="big-icon">📦</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ── -->
+<section id="products">
+  <div class="section-header">
+    <div>
+      <div class="section-label">// All products</div>
+      <h2 class="section-title">SHOP ALL</h2>
+    </div>
+    <a href="#" class="view-all">View all →</a>
+  </div>
+
+  <!-- Search -->
+  <div class="search-bar">
+    <div class="search-input-wrap">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search Arduino, OLED, sensors, modules..."
+        oninput="searchProducts(this.value)"
+      >
+    </div>
+    <button class="filter-btn" onclick="sortBy('price')">💰 Price</button>
+    <button class="filter-btn" onclick="sortBy('name')">🔤 Name</button>
+    <button class="filter-btn" onclick="sortBy('stock')">📦 Stock</button>
+  </div>
+
+  <!-- Grid -->
+  <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- ── FOOTER ── -->
+<div style="max-width:1300px;margin:0 auto;padding:0 2.5rem;">
+  <footer style="padding:3rem 0 2rem;margin:4rem 0 0;">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="text-decoration:none;">
+          <div class="logo-icon">⚡</div>
+          <span class="logo-text">FAISAL <span>ELECTRONICS</span></span>
+        </a>
+        <p>Your trusted source for quality electronic components. Serving makers, engineers and students since 2018.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Arduino Boards</a></li>
+          <li><a href="#">OLED Displays</a></li>
+          <li><a href="#">Sensors</a></li>
+          <li><a href="#">Modules</a></li>
+          <li><a href="#">Starter Kits</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Order Tracking</a></li>
+          <li><a href="#">Returns Policy</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Pinouts & Docs</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">📧 faisal@electronics.com</a></li>
+          <li><a href="#">📞 +91 98765 43210</a></li>
+          <li><a href="#">📍 Chennai, Tamil Nadu</a></li>
+          <li><a href="#">⏰ Mon–Sat 9AM–7PM</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span>Faisal Electronics</span>. All rights reserved.</div>
+      <div class="social-links">
+        <a class="social-link" href="#">📘</a>
+        <a class="social-link" href="#">📸</a>
+        <a class="social-link" href="#">💬</a>
+        <a class="social-link" href="#">▶️</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast">
+  <span class="toast-icon">✅</span>
+  <span id="toastMsg">Added to cart!</span>
+</div>
+
+<script>
+// ── PRODUCT DATA ─────────────────────────────
+const products = [
+  { id:1,  name:"Arduino Uno R3",         cat:"boards",  price:450,  oldPrice:null, stock:"in",  badge:"hot",  icon:"🤖", specs:["ATmega328P","16MHz","USB"] },
+  { id:2,  name:"Arduino Nano",           cat:"boards",  price:320,  oldPrice:380,  stock:"in",  badge:"sale", icon:"⚙️", specs:["ATmega328P","Mini USB"] },
+  { id:3,  name:"NodeMCU ESP8266",        cat:"boards",  price:220,  oldPrice:null, stock:"in",  badge:"new",  icon:"📶", specs:["WiFi","80MHz","GPIO"] },
+  { id:4,  name:"ESP32 Dev Kit",          cat:"boards",  price:380,  oldPrice:null, stock:"in",  badge:"hot",  icon:"🔮", specs:["Dual Core","WiFi","BT"] },
+  { id:5,  name:"OLED 0.96\" SSD1306",   cat:"display", price:120,  oldPrice:150,  stock:"in",  badge:"sale", icon:"📺", specs:["128x64","I2C","3.3-5V"] },
+  { id:6,  name:"OLED 1.3\" SH1106",     cat:"display", price:180,  oldPrice:null, stock:"in",  badge:"new",  icon:"🖥️", specs:["128x64","I2C","White"] },
+  { id:7,  name:"16x2 LCD + I2C",        cat:"display", price:95,   oldPrice:null, stock:"in",  badge:null,   icon:"📟", specs:["16x2","I2C","Blue"] },
+  { id:8,  name:"2.4\" TFT Display",     cat:"display", price:320,  oldPrice:null, stock:"low", badge:"low",  icon:"🎨", specs:["240x320","SPI","ILI9341"] },
+  { id:9,  name:"MQ-135 Air Quality",    cat:"sensors", price:85,   oldPrice:null, stock:"in",  badge:null,   icon:"💨", specs:["VOC","CO2","Analog"] },
+  { id:10, name:"DHT22 Temp + Humidity", cat:"sensors", price:95,   oldPrice:120,  stock:"in",  badge:"sale", icon:"🌡️", specs:["±0.5°C","I2C","3-5V"] },
+  { id:11, name:"HC-SR04 Ultrasonic",    cat:"sensors", price:65,   oldPrice:null, stock:"in",  badge:null,   icon:"📡", specs:["2-400cm","5V","TTL"] },
+  { id:12, name:"MPU-6050 Gyro+Accel",   cat:"sensors", price:130,  oldPrice:null, stock:"in",  badge:"new",  icon:"🔄", specs:["6-axis","I2C","3.3V"] },
+  { id:13, name:"PIR Motion Sensor",     cat:"sensors", price:55,   oldPrice:null, stock:"in",  badge:null,   icon:"👁️", specs:["5-12V","Digital"] },
+  { id:14, name:"DS3231 RTC Module",     cat:"modules", price:145,  oldPrice:null, stock:"in",  badge:null,   icon:"🕐", specs:["I2C","Battery","±2ppm"] },
+  { id:15, name:"L298N Motor Driver",    cat:"modules", price:110,  oldPrice:null, stock:"in",  badge:null,   icon:"🔧", specs:["2A","5-35V","Dual H"] },
+  { id:16, name:"HC-05 Bluetooth",       cat:"modules", price:185,  oldPrice:220,  stock:"low", badge:"low",  icon:"🔵", specs:["UART","3.3V","10m"] },
+];
+
+let cartCount  = 0;
+let cartTotal  = 0;
+let filtered   = [...products];
+
+// ── RENDER PRODUCTS ──────────────────────────
+function renderProducts(list) {
+  const grid = document.getElementById('productsGrid');
+  if (!list.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:3rem;font-size:15px;">No products found.</div>';
+    return;
+  }
+  grid.innerHTML = list.map(p => `
+    <div class="product-card" data-cat="${p.cat}">
+      ${p.badge ? `<span class="product-badge badge-${p.badge}">${p.badge}</span>` : ''}
+      <div class="product-img">
+        ${p.icon}
+        <div class="product-wishlist" onclick="wishlist('${p.name}')">♡</div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-specs">
+          ${p.specs.map(s => `<span class="spec-tag">${s}</span>`).join('')}
+        </div>
+        <div class="product-footer">
+          <div class="product-price">
+            <div class="price-current">₹${p.price}</div>
+            ${p.oldPrice ? `<div class="price-old">₹${p.oldPrice}</div>` : ''}
+            <div class="stock-status ${p.stock === 'in' ? 'in-stock' : p.stock === 'low' ? 'low-stock' : 'out-stock'}">
+              <span class="stock-dot"></span>
+              ${p.stock === 'in' ? 'In Stock' : p.stock === 'low' ? 'Low Stock' : 'Out of Stock'}
+            </div>
+          </div>
+          <button class="btn-add" onclick="addToCart('${p.name}', ${p.price})">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── ADD TO CART ──────────────────────────────
+function addToCart(name, price) {
+  cartCount++;
+  cartTotal += price;
+  document.getElementById('cartCount').textContent = cartCount;
+  showToast(`✅ ${name} added to cart!`);
+}
+
+// ── TOAST ────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ── SEARCH ───────────────────────────────────
+function searchProducts(q) {
+  const term = q.toLowerCase();
+  filtered = products.filter(p =>
+    p.name.toLowerCase().includes(term) ||
+    p.cat.toLowerCase().includes(term) ||
+    p.specs.some(s => s.toLowerCase().includes(term))
+  );
+  renderProducts(filtered);
+}
+
+// ── CATEGORY FILTER ──────────────────────────
+function filterCategory(cat) {
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  filtered = cat === 'all' ? [...products] : products.filter(p => p.cat === cat);
+  renderProducts(filtered);
+  document.getElementById('products').scrollIntoView({ behavior:'smooth' });
+}
+
+// ── SORT ─────────────────────────────────────
+function sortBy(key) {
+  if (key === 'price')  filtered.sort((a,b) => a.price - b.price);
+  if (key === 'name')   filtered.sort((a,b) => a.name.localeCompare(b.name));
+  if (key === 'stock')  filtered.sort((a,b) => (a.stock === 'in' ? 0 : 1) - (b.stock === 'in' ? 0 : 1));
+  renderProducts(filtered);
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+}
+
+// ── WISHLIST ─────────────────────────────────
+function wishlist(name) {
+  showToast(`♡ ${name} saved to wishlist!`);
+}
+
+// ── CART ─────────────────────────────────────
+function openCart() {
+  if (cartCount === 0) {
+    showToast('🛒 Your cart is empty!');
+  } else {
+    showToast(`🛒 ${cartCount} items — ₹${cartTotal} total`);
+  }
+}
+
+// ── COUNTDOWN TIMER ──────────────────────────
+let saleEnd = Date.now() + (8 * 3600 + 24 * 60) * 1000;
+
+function updateCountdown() {
+  const diff = Math.max(0, saleEnd - Date.now());
+  const h = Math.floor(diff / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cdHours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cdMins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('cdSecs').textContent  = String(s).padStart(2,'0');
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// ── INIT ─────────────────────────────────────
+renderProducts(products);
+</script>
+</body>
+</html>
+
